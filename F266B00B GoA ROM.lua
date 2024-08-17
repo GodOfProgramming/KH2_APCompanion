@@ -282,20 +282,19 @@ function _OnFrame()
     GetVersion()
     return
   end
-  if true then --Define current values for common addresses
-    World     = ReadByte(Now + 0x00)
-    Room      = ReadByte(Now + 0x01)
-    Place     = ReadShort(Now + 0x00)
-    Door      = ReadShort(Now + 0x02)
-    Map       = ReadShort(Now + 0x04)
-    Btl       = ReadShort(Now + 0x06)
-    Evt       = ReadShort(Now + 0x08)
-    PrevPlace = ReadShort(Now + 0x30)
-    if not OnPC then
-      ARD = ReadInt(ARDPointer)
-    else
-      ARD = ReadLong(ARDPointer)
-    end
+  --Define current values for common addresses
+  World     = ReadByte(Now + 0x00)
+  Room      = ReadByte(Now + 0x01)
+  Place     = ReadShort(Now + 0x00)
+  Door      = ReadShort(Now + 0x02)
+  Map       = ReadShort(Now + 0x04)
+  Btl       = ReadShort(Now + 0x06)
+  Evt       = ReadShort(Now + 0x08)
+  PrevPlace = ReadShort(Now + 0x30)
+  if not OnPC then
+    ARD = ReadInt(ARDPointer)
+  else
+    ARD = ReadLong(ARDPointer)
   end
   NewGame()
   GoA()
@@ -407,218 +406,167 @@ function GoA()
     end
   end
   --Visit Locks
-  if true then
-    --Namine's Sketches
-    VisitLock(Save + 0x3642, 1, Save + 0x1CD0, 0x01) --TT_START_1
-    --Ice Cream
-    VisitLock(Save + 0x3649, 1, Save + 0x1CD2, 0x10) --TT_INIT
-    VisitLock(Save + 0x3649, 2, Save + 0x1C92, 0x08) --ZZ_TT_CHECK_1_GOA
-    VisitLock(Save + 0x3649, 3, Save + 0x1C92, 0x10) --ZZ_TT_CHECK_2_GOA
-    --Membership Card
-    VisitLock(Save + 0x3643, 1, Save + 0x1D1B, 0x08) --HB_INIT
-    VisitLock(Save + 0x3643, 2, Save + 0x1C92, 0x20) --ZZ_HB_CHECK_1_GOA
-    VisitLock(Save + 0x3643, 0, Save + 0x1C92, 0x40) --ZZ_HB_CHECK_2_GOA
-    --Beast's Claw
-    VisitLock(Save + 0x35B3, 1, Save + 0x1D31, 0x08) --BB_INIT
-    VisitLock(Save + 0x35B3, 2, Save + 0x1C92, 0x80) --ZZ_BB_CHECK_GOA
-    --Battlefields of War
-    VisitLock(Save + 0x35AE, 1, Save + 0x1D53, 0x20) --HE_INIT
-    VisitLock(Save + 0x35AE, 2, Save + 0x1C93, 0x01) --ZZ_HE_CHECK_GOA
-    --Scimitar
-    VisitLock(Save + 0x35C0, 1, Save + 0x1D73, 0x02) --AL_INIT
-    VisitLock(Save + 0x35C0, 2, Save + 0x1C93, 0x02) --ZZ_AL_CHECK_GOA
-    --Sword of the Ancestors
-    VisitLock(Save + 0x35AF, 1, Save + 0x1D91, 0x01) --MU_INIT
-    VisitLock(Save + 0x35AF, 2, Save + 0x1C93, 0x04) --ZZ_MU_CHECK_GOA
-    --Proud Fang
-    VisitLock(Save + 0x35B5, 1, Save + 0x1DD5, 0x04) --LK_INIT
-    VisitLock(Save + 0x35B5, 2, Save + 0x1C94, 0x01) --ZZ_LK_CHECK_GOA
-    --Royal Summons (DUMMY 13)
-    VisitLock(Save + 0x365D, 1, Save + 0x1E12, 0x08) --DC_INIT
-    VisitLock(Save + 0x365D, 2, Save + 0x1C94, 0x20) --ZZ_DC_CHECK_GOA
-    --Bone Fist
-    VisitLock(Save + 0x35B4, 1, Save + 0x1E56, 0x08) --NM_INIT
-    VisitLock(Save + 0x35B4, 2, Save + 0x1C94, 0x40) --ZZ_NM_CHECK_GOA
-    --Skill and Crossbones
-    VisitLock(Save + 0x35B6, 1, Save + 0x1E99, 0x04) --CA_INIT
-    VisitLock(Save + 0x35B6, 2, Save + 0x1C94, 0x80) --ZZ_CA_CHECK_GOA
-    --Identity Disk
-    VisitLock(Save + 0x35C2, 1, Save + 0x1EB5, 0x20) --TR_INIT
-    VisitLock(Save + 0x35C2, 2, Save + 0x1C95, 0x01) --ZZ_TR_CHECK_GOA
-    --Way to the Dawn
-    VisitLock(Save + 0x35C1, 1, Save + 0x1C95, 0x02) --ZZ_EH_CHECK_1_GOA
-    VisitLock(Save + 0x35C1, 2, Save + 0x1C95, 0x04) --ZZ_EH_CHECK_2_GOA
-  else                                               --Remove the item requirements
-    --Namine's Sketches
-    VisitLock(Save + 0x3642, 0, Save + 0x1CD0, 0x01) --TT_START_1
-    --Ice Cream
-    VisitLock(Save + 0x3649, 0, Save + 0x1CD2, 0x10) --TT_INIT
-    VisitLock(Save + 0x3649, 0, Save + 0x1C92, 0x08) --ZZ_TT_CHECK_1_GOA
-    VisitLock(Save + 0x3649, 0, Save + 0x1C92, 0x10) --ZZ_TT_CHECK_2_GOA
-    --Membership Card
-    VisitLock(Save + 0x3643, 0, Save + 0x1D1B, 0x08) --HB_INIT
-    VisitLock(Save + 0x3643, 0, Save + 0x1C92, 0x20) --ZZ_HB_CHECK_1_GOA
-    VisitLock(Save + 0x3643, 0, Save + 0x1C92, 0x40) --ZZ_HB_CHECK_2_GOA
-    --Beast's Claw
-    VisitLock(Save + 0x35B3, 0, Save + 0x1D31, 0x08) --BB_INIT
-    VisitLock(Save + 0x35B3, 0, Save + 0x1C92, 0x80) --ZZ_BB_CHECK_GOA
-    --Battlefields of War
-    VisitLock(Save + 0x35AE, 0, Save + 0x1D53, 0x20) --HE_INIT
-    VisitLock(Save + 0x35AE, 0, Save + 0x1C93, 0x01) --ZZ_HE_CHECK_GOA
-    --Scimitar
-    VisitLock(Save + 0x35C0, 0, Save + 0x1D73, 0x02) --AL_INIT
-    VisitLock(Save + 0x35C0, 0, Save + 0x1C93, 0x02) --ZZ_AL_CHECK_GOA
-    --Sword of the Ancestors
-    VisitLock(Save + 0x35AF, 0, Save + 0x1D91, 0x01) --MU_INIT
-    VisitLock(Save + 0x35AF, 0, Save + 0x1C93, 0x04) --ZZ_MU_CHECK_GOA
-    --Proud Fang
-    VisitLock(Save + 0x35B5, 0, Save + 0x1DD5, 0x04) --LK_INIT
-    VisitLock(Save + 0x35B5, 0, Save + 0x1C94, 0x01) --ZZ_LK_CHECK_GOA
-    --Royal Summons (DUMMY 13)
-    VisitLock(Save + 0x365D, 0, Save + 0x1E12, 0x08) --DC_INIT
-    VisitLock(Save + 0x365D, 0, Save + 0x1C94, 0x20) --ZZ_DC_CHECK_GOA
-    --Bone Fist
-    VisitLock(Save + 0x35B4, 0, Save + 0x1E56, 0x08) --NM_INIT
-    VisitLock(Save + 0x35B4, 0, Save + 0x1C94, 0x40) --ZZ_NM_CHECK_GOA
-    --Skill and Crossbones
-    VisitLock(Save + 0x35B6, 0, Save + 0x1E99, 0x04) --CA_INIT
-    VisitLock(Save + 0x35B6, 0, Save + 0x1C94, 0x80) --ZZ_CA_CHECK_GOA
-    --Identity Disk
-    VisitLock(Save + 0x35C2, 0, Save + 0x1EB5, 0x20) --TR_INIT
-    VisitLock(Save + 0x35C2, 0, Save + 0x1C95, 0x01) --ZZ_TR_CHECK_GOA
-    --Way to the Dawn
-    VisitLock(Save + 0x35C1, 0, Save + 0x1C95, 0x02) --ZZ_EH_CHECK_1_GOA
-    VisitLock(Save + 0x35C1, 0, Save + 0x1C95, 0x04) --ZZ_EH_CHECK_2_GOA
-
-    --Disable GoA Visit Skip
-    --BitOr(Save+0x1CED,0x01) --TT_MISTERY_SKIP_GOA
-    --BitOr(Save+0x1D20,0x20) --HB_SCENARIO_5_SKIP_GOA
-    --BitOr(Save+0x1DB6,0x08) --PO_SCENARIO_0_SKIP_GOA
-    --BitOr(Save+0x1EB1,0x01) --TR_LIGHTCYCLE_SKIP_GOA
-  end
+  --Namine's Sketches
+  VisitLock(Save + 0x3642, 1, Save + 0x1CD0, 0x01)   --TT_START_1
+  --Ice Cream
+  VisitLock(Save + 0x3649, 1, Save + 0x1CD2, 0x10)   --TT_INIT
+  VisitLock(Save + 0x3649, 2, Save + 0x1C92, 0x08)   --ZZ_TT_CHECK_1_GOA
+  VisitLock(Save + 0x3649, 3, Save + 0x1C92, 0x10)   --ZZ_TT_CHECK_2_GOA
+  --Membership Card
+  VisitLock(Save + 0x3643, 1, Save + 0x1D1B, 0x08)   --HB_INIT
+  VisitLock(Save + 0x3643, 2, Save + 0x1C92, 0x20)   --ZZ_HB_CHECK_1_GOA
+  VisitLock(Save + 0x3643, 0, Save + 0x1C92, 0x40)   --ZZ_HB_CHECK_2_GOA
+  --Beast's Claw
+  VisitLock(Save + 0x35B3, 1, Save + 0x1D31, 0x08)   --BB_INIT
+  VisitLock(Save + 0x35B3, 2, Save + 0x1C92, 0x80)   --ZZ_BB_CHECK_GOA
+  --Battlefields of War
+  VisitLock(Save + 0x35AE, 1, Save + 0x1D53, 0x20)   --HE_INIT
+  VisitLock(Save + 0x35AE, 2, Save + 0x1C93, 0x01)   --ZZ_HE_CHECK_GOA
+  --Scimitar
+  VisitLock(Save + 0x35C0, 1, Save + 0x1D73, 0x02)   --AL_INIT
+  VisitLock(Save + 0x35C0, 2, Save + 0x1C93, 0x02)   --ZZ_AL_CHECK_GOA
+  --Sword of the Ancestors
+  VisitLock(Save + 0x35AF, 1, Save + 0x1D91, 0x01)   --MU_INIT
+  VisitLock(Save + 0x35AF, 2, Save + 0x1C93, 0x04)   --ZZ_MU_CHECK_GOA
+  --Proud Fang
+  VisitLock(Save + 0x35B5, 1, Save + 0x1DD5, 0x04)   --LK_INIT
+  VisitLock(Save + 0x35B5, 2, Save + 0x1C94, 0x01)   --ZZ_LK_CHECK_GOA
+  --Royal Summons (DUMMY 13)
+  VisitLock(Save + 0x365D, 1, Save + 0x1E12, 0x08)   --DC_INIT
+  VisitLock(Save + 0x365D, 2, Save + 0x1C94, 0x20)   --ZZ_DC_CHECK_GOA
+  --Bone Fist
+  VisitLock(Save + 0x35B4, 1, Save + 0x1E56, 0x08)   --NM_INIT
+  VisitLock(Save + 0x35B4, 2, Save + 0x1C94, 0x40)   --ZZ_NM_CHECK_GOA
+  --Skill and Crossbones
+  VisitLock(Save + 0x35B6, 1, Save + 0x1E99, 0x04)   --CA_INIT
+  VisitLock(Save + 0x35B6, 2, Save + 0x1C94, 0x80)   --ZZ_CA_CHECK_GOA
+  --Identity Disk
+  VisitLock(Save + 0x35C2, 1, Save + 0x1EB5, 0x20)   --TR_INIT
+  VisitLock(Save + 0x35C2, 2, Save + 0x1C95, 0x01)   --ZZ_TR_CHECK_GOA
+  --Way to the Dawn
+  VisitLock(Save + 0x35C1, 1, Save + 0x1C95, 0x02)   --ZZ_EH_CHECK_1_GOA
+  VisitLock(Save + 0x35C1, 2, Save + 0x1C95, 0x04)   --ZZ_EH_CHECK_2_GOA
   --Battle Level
-  if true then
-    local Bitmask = 0x00001
-    local Visit
-    --Bitmask 0x00001 for all Lv  1
-    --Bitmask 0x00002 for all Lv 50
-    --Bitmask 0x00004 for all Lv 80
-    --Bitmask 0x00008 for all Lv 99
-    if World == 0x02 then --Twilight Town & Simulated Twilight Town
-      Visit = ReadByte(Save + 0x3FF5)
-      if Visit == 1 or Visit == 2 or Visit == 3 then
-        Bitmask = 0x00010
-      elseif Visit == 4 or Visit == 5 then
-        Bitmask = 0x00020
-      elseif Visit == 6 then
-        Bitmask = 0x00040
-      elseif Visit == 7 or Visit == 8 then
-        Bitmask = 0x00100
-      elseif Visit == 9 then
-        Bitmask = 0x00200
-      elseif Visit == 10 then
-        Bitmask = 0x00800
-      end
-      --0x00080 actual TT7
-      --0x00400 post-HB4
-      --Lv 1, 2, 3, 6, 7, 28, 34, 47
-    elseif World == 0x04 then --Hollow Bastion
-      Visit = ReadByte(Save + 0x3FFD)
-      if Visit == 1 or Visit == 2 or Visit == 3 then
-        Bitmask = 0x00010
-      elseif Visit == 4 then
-        Bitmask = 0x00080
-      elseif Visit == 5 then
-        Bitmask = 0x00200
-      end
-      --0x00020 actual HB2 & HB3
-      --0x00040 HB4 pre-SP1
-      --0x00100 post-HB4
-      --Lv 8, 15, 28, 30, 34, 45
-    elseif World == 0x05 then --Beast's Castle
-      Visit = ReadByte(Save + 0x4001)
-      if Visit == 1 then
-        Bitmask = 0x00010
-      elseif Visit == 2 then
-        Bitmask = 0x00020
-      end
-      --Lv 13, 36
-    elseif World == 0x06 then --Olympus Coliseum
-      Visit = ReadByte(Save + 0x4005)
-      if Visit == 1 then
-        Bitmask = 0x00010
-      elseif Visit == 2 then
-        Bitmask = 0x00020
-      end
-      --Lv 16, 39
-    elseif World == 0x07 then --Agrabah
-      Visit = ReadByte(Save + 0x4009)
-      if Visit == 1 then
-        Bitmask = 0x00010
-      elseif Visit == 2 then
-        Bitmask = 0x00040
-      end
-      --0x00020 AG1 post HB4
-      --Lv 22, 38, 40
-    elseif World == 0x08 then --The Land of Dragons
-      Visit = ReadByte(Save + 0x400D)
-      if Visit == 1 then
-        Bitmask = 0x00010
-      elseif Visit == 2 then
-        Bitmask = 0x00020
-      end
-      --Lv 10, 35
-    elseif World == 0x09 then --100 Acre Wood
+  local Bitmask = 0x00001
+  local Visit
+  --Bitmask 0x00001 for all Lv  1
+  --Bitmask 0x00002 for all Lv 50
+  --Bitmask 0x00004 for all Lv 80
+  --Bitmask 0x00008 for all Lv 99
+  if World == 0x02 then --Twilight Town & Simulated Twilight Town
+    Visit = ReadByte(Save + 0x3FF5)
+    if Visit == 1 or Visit == 2 or Visit == 3 then
       Bitmask = 0x00010
-      --Lv 1
-    elseif World == 0x0A then --Pride Lands
-      Visit = ReadByte(Save + 0x4015)
-      if Visit == 1 then
-        Bitmask = 0x00010
-      elseif Visit == 2 then
-        Bitmask = 0x00040
-      end
-      --0x00020 PL1 post HB4
-      --Lv 26, 41, 43
-    elseif World == 0x0C or World == 0x0D then --Disney Castle & Timeless River
-      Bitmask = 0x00010
-      if ReadByte(Save + 0x1E1E) > 0 then      --Post-HB4
-        Bitmask = 0x00020
-      end
-      --Lv 18, 34 for DC
-      --Lv 19, 34 for TR
-    elseif World == 0x0E then --Halloween Town
-      Visit = ReadByte(Save + 0x4025)
-      if Visit == 1 then
-        Bitmask = 0x00010
-      elseif Visit == 2 then
-        Bitmask = 0x00040
-      end
-      --0x00020 HT1 post HB4
-      --Lv 24, 39, 41
-    elseif World == 0x10 then --Port Royal
-      Visit = ReadByte(Save + 0x402D)
-      if Visit == 1 then
-        Bitmask = 0x00010
-      elseif Visit == 2 then
-        Bitmask = 0x00020
-      end
-      --Lv 20, 37
-    elseif World == 0x11 then --Space Paranoids
-      Visit = ReadByte(Save + 0x4031)
-      if Visit == 1 then
-        Bitmask = 0x00010
-      elseif Visit == 2 then
-        Bitmask = 0x00040
-      end
-      --0x00020 post HB4
-      --Lv 28, 34, 45
-    elseif World == 0x12 then --The World that Never Was
-      Bitmask = 0x00010
-      --Lv 50
+    elseif Visit == 4 or Visit == 5 then
+      Bitmask = 0x00020
+    elseif Visit == 6 then
+      Bitmask = 0x00040
+    elseif Visit == 7 or Visit == 8 then
+      Bitmask = 0x00100
+    elseif Visit == 9 then
+      Bitmask = 0x00200
+    elseif Visit == 10 then
+      Bitmask = 0x00800
     end
-    WriteInt(Save + 0x3724, Bitmask)
+    --0x00080 actual TT7
+    --0x00400 post-HB4
+    --Lv 1, 2, 3, 6, 7, 28, 34, 47
+  elseif World == 0x04 then --Hollow Bastion
+    Visit = ReadByte(Save + 0x3FFD)
+    if Visit == 1 or Visit == 2 or Visit == 3 then
+      Bitmask = 0x00010
+    elseif Visit == 4 then
+      Bitmask = 0x00080
+    elseif Visit == 5 then
+      Bitmask = 0x00200
+    end
+    --0x00020 actual HB2 & HB3
+    --0x00040 HB4 pre-SP1
+    --0x00100 post-HB4
+    --Lv 8, 15, 28, 30, 34, 45
+  elseif World == 0x05 then --Beast's Castle
+    Visit = ReadByte(Save + 0x4001)
+    if Visit == 1 then
+      Bitmask = 0x00010
+    elseif Visit == 2 then
+      Bitmask = 0x00020
+    end
+    --Lv 13, 36
+  elseif World == 0x06 then --Olympus Coliseum
+    Visit = ReadByte(Save + 0x4005)
+    if Visit == 1 then
+      Bitmask = 0x00010
+    elseif Visit == 2 then
+      Bitmask = 0x00020
+    end
+    --Lv 16, 39
+  elseif World == 0x07 then --Agrabah
+    Visit = ReadByte(Save + 0x4009)
+    if Visit == 1 then
+      Bitmask = 0x00010
+    elseif Visit == 2 then
+      Bitmask = 0x00040
+    end
+    --0x00020 AG1 post HB4
+    --Lv 22, 38, 40
+  elseif World == 0x08 then --The Land of Dragons
+    Visit = ReadByte(Save + 0x400D)
+    if Visit == 1 then
+      Bitmask = 0x00010
+    elseif Visit == 2 then
+      Bitmask = 0x00020
+    end
+    --Lv 10, 35
+  elseif World == 0x09 then --100 Acre Wood
+    Bitmask = 0x00010
+    --Lv 1
+  elseif World == 0x0A then --Pride Lands
+    Visit = ReadByte(Save + 0x4015)
+    if Visit == 1 then
+      Bitmask = 0x00010
+    elseif Visit == 2 then
+      Bitmask = 0x00040
+    end
+    --0x00020 PL1 post HB4
+    --Lv 26, 41, 43
+  elseif World == 0x0C or World == 0x0D then --Disney Castle & Timeless River
+    Bitmask = 0x00010
+    if ReadByte(Save + 0x1E1E) > 0 then      --Post-HB4
+      Bitmask = 0x00020
+    end
+    --Lv 18, 34 for DC
+    --Lv 19, 34 for TR
+  elseif World == 0x0E then --Halloween Town
+    Visit = ReadByte(Save + 0x4025)
+    if Visit == 1 then
+      Bitmask = 0x00010
+    elseif Visit == 2 then
+      Bitmask = 0x00040
+    end
+    --0x00020 HT1 post HB4
+    --Lv 24, 39, 41
+  elseif World == 0x10 then --Port Royal
+    Visit = ReadByte(Save + 0x402D)
+    if Visit == 1 then
+      Bitmask = 0x00010
+    elseif Visit == 2 then
+      Bitmask = 0x00020
+    end
+    --Lv 20, 37
+  elseif World == 0x11 then --Space Paranoids
+    Visit = ReadByte(Save + 0x4031)
+    if Visit == 1 then
+      Bitmask = 0x00010
+    elseif Visit == 2 then
+      Bitmask = 0x00040
+    end
+    --0x00020 post HB4
+    --Lv 28, 34, 45
+  elseif World == 0x12 then --The World that Never Was
+    Bitmask = 0x00010
+    --Lv 50
   end
+  WriteInt(Save + 0x3724, Bitmask)
   --Fix Genie Crash
   if ReadByte(Save + 0x36C4) & 0x10 == 0x10 then --If Lamp Charm is obtained
     local CurSubmenu
@@ -669,14 +617,12 @@ function GoA()
     end
   end
   --Growth Abilities during Forms
-  if true then
-    local Growth = { 0x805E, 0x8062, 0x8234, 0x8066, 0x806A }
-    for form = 0, 4 do --Adjust Form Movement
-      local FormAddress = Save + 0x32F6 + 0x38 * form
-      for level = 0, 6 do
-        if ReadByte(FormAddress) == level + 1 then
-          WriteShort(FormAddress + 6, Growth[form + 1] + math.floor(level / 2))
-        end
+  local Growth = { 0x805E, 0x8062, 0x8234, 0x8066, 0x806A }
+  for form = 0, 4 do --Adjust Form Movement
+    local FormAddress = Save + 0x32F6 + 0x38 * form
+    for level = 0, 6 do
+      if ReadByte(FormAddress) == level + 1 then
+        WriteShort(FormAddress + 6, Growth[form + 1] + math.floor(level / 2))
       end
     end
   end
@@ -809,98 +755,94 @@ function GoA()
     WriteByte(Save + 0x3599, ReadByte(Save + 0x3599) + 1)
   end
   --Donald's Staff Active Abilities
-  if true then
-    local Staff    = ReadShort(Save + 0x2604)
-    local Ability  = {}    --Offset for staff's ability within 03system.bar's item
-    Ability[0x04B] = 0x48A --Mage's Staff
-    Ability[0x094] = 0x49A --Hammer Staff
-    Ability[0x095] = 0x4AA --Victory Bell
-    Ability[0x097] = 0x4CA --Comet Staff
-    Ability[0x098] = 0x4DA --Lord's Broom
-    Ability[0x099] = 0x4EA --Wisdom Wand
-    Ability[0x096] = 0x4BA --Meteor Staff
-    Ability[0x09A] = 0x4FA --Rising Dragon
-    Ability[0x09C] = 0x51A --Shaman's Relic
-    Ability[0x258] = 0x95A --Shaman's Relic+
-    Ability[0x09B] = 0x50A --Nobody Lance
-    Ability[0x221] = 0x86A --Centurion
-    Ability[0x222] = 0x87A --Centurion+
-    Ability[0x1E2] = 0x6DA --Save the Queen
-    Ability[0x1F7] = 0x82A --Save the Queen+
-    Ability[0x223] = 0x88A --Plain Mushroom
-    Ability[0x224] = 0x89A --Plain Mushroom+
-    Ability[0x225] = 0x8AA --Precious Mushroom
-    Ability[0x226] = 0x8BA --Precious Mushroom+
-    Ability[0x227] = 0x8CA --Premium Mushroom
-    Ability[0x0A1] = 0x52A --Detection Staff
-    if Ability[Staff] ~= nil then
-      local StatOffset = 0x8 + ReadInt(BAR(Sys3, 0x6, 4), OnPC) * 0x18
-      Ability = ReadShort(BAR(Sys3, 0x6, StatOffset + Ability[Staff]), OnPC) --Currently-equipped staff's ability
-      if Ability == 0x0A5 then                                               --Donald Fire
-        WriteShort(Save + 0x26F6, 0x80A5)
-        WriteByte(BAR(Sys3, 0x6, 0x168F), 0, OnPC)
-      elseif Ability == 0x0A6 then --Donald Blizzard
-        WriteShort(Save + 0x26F6, 0x80A6)
-        WriteByte(BAR(Sys3, 0x6, 0x16A7), 0, OnPC)
-      elseif Ability == 0x0A7 then --Donald Thunder
-        WriteShort(Save + 0x26F6, 0x80A7)
-        WriteByte(BAR(Sys3, 0x6, 0x16BF), 0, OnPC)
-      elseif Ability == 0x0A8 then --Donald Cure
-        WriteShort(Save + 0x26F6, 0x80A8)
-        WriteByte(BAR(Sys3, 0x6, 0x16D7), 0, OnPC)
-      elseif ReadShort(Save + 0x26F6) ~= 0 then
-        WriteShort(Save + 0x26F6, 0)               --Remove Ability Slot 80
-        WriteByte(BAR(Sys3, 0x6, 0x168F), 2, OnPC) --Restore Original AP Costs
-        WriteByte(BAR(Sys3, 0x6, 0x16A7), 2, OnPC)
-        WriteByte(BAR(Sys3, 0x6, 0x16BF), 2, OnPC)
-        WriteByte(BAR(Sys3, 0x6, 0x16D7), 3, OnPC)
-      end
+  local Staff    = ReadShort(Save + 0x2604)
+  local Ability  = {}    --Offset for staff's ability within 03system.bar's item
+  Ability[0x04B] = 0x48A --Mage's Staff
+  Ability[0x094] = 0x49A --Hammer Staff
+  Ability[0x095] = 0x4AA --Victory Bell
+  Ability[0x097] = 0x4CA --Comet Staff
+  Ability[0x098] = 0x4DA --Lord's Broom
+  Ability[0x099] = 0x4EA --Wisdom Wand
+  Ability[0x096] = 0x4BA --Meteor Staff
+  Ability[0x09A] = 0x4FA --Rising Dragon
+  Ability[0x09C] = 0x51A --Shaman's Relic
+  Ability[0x258] = 0x95A --Shaman's Relic+
+  Ability[0x09B] = 0x50A --Nobody Lance
+  Ability[0x221] = 0x86A --Centurion
+  Ability[0x222] = 0x87A --Centurion+
+  Ability[0x1E2] = 0x6DA --Save the Queen
+  Ability[0x1F7] = 0x82A --Save the Queen+
+  Ability[0x223] = 0x88A --Plain Mushroom
+  Ability[0x224] = 0x89A --Plain Mushroom+
+  Ability[0x225] = 0x8AA --Precious Mushroom
+  Ability[0x226] = 0x8BA --Precious Mushroom+
+  Ability[0x227] = 0x8CA --Premium Mushroom
+  Ability[0x0A1] = 0x52A --Detection Staff
+  if Ability[Staff] ~= nil then
+    local StatOffset = 0x8 + ReadInt(BAR(Sys3, 0x6, 4), OnPC) * 0x18
+    Ability = ReadShort(BAR(Sys3, 0x6, StatOffset + Ability[Staff]), OnPC) --Currently-equipped staff's ability
+    if Ability == 0x0A5 then                                               --Donald Fire
+      WriteShort(Save + 0x26F6, 0x80A5)
+      WriteByte(BAR(Sys3, 0x6, 0x168F), 0, OnPC)
+    elseif Ability == 0x0A6 then --Donald Blizzard
+      WriteShort(Save + 0x26F6, 0x80A6)
+      WriteByte(BAR(Sys3, 0x6, 0x16A7), 0, OnPC)
+    elseif Ability == 0x0A7 then --Donald Thunder
+      WriteShort(Save + 0x26F6, 0x80A7)
+      WriteByte(BAR(Sys3, 0x6, 0x16BF), 0, OnPC)
+    elseif Ability == 0x0A8 then --Donald Cure
+      WriteShort(Save + 0x26F6, 0x80A8)
+      WriteByte(BAR(Sys3, 0x6, 0x16D7), 0, OnPC)
+    elseif ReadShort(Save + 0x26F6) ~= 0 then
+      WriteShort(Save + 0x26F6, 0)               --Remove Ability Slot 80
+      WriteByte(BAR(Sys3, 0x6, 0x168F), 2, OnPC) --Restore Original AP Costs
+      WriteByte(BAR(Sys3, 0x6, 0x16A7), 2, OnPC)
+      WriteByte(BAR(Sys3, 0x6, 0x16BF), 2, OnPC)
+      WriteByte(BAR(Sys3, 0x6, 0x16D7), 3, OnPC)
     end
   end
   --Goofy's Shield Active Abilities
-  if true then
-    local Shield   = ReadShort(Save + 0x2718)
-    local Ability  = {}    --Offset for shield's ability within 03system.bar's item
-    Ability[0x031] = 0x53A --Knight's Shield
-    Ability[0x08B] = 0x54A --Adamant Shield
-    Ability[0x08C] = 0x55A --Chain Gear
-    Ability[0x08E] = 0x57A --Falling Star
-    Ability[0x08F] = 0x58A --Dreamcloud
-    Ability[0x090] = 0x59A --Knight Defender
-    Ability[0x08D] = 0x56A --Ogre Shield
-    Ability[0x091] = 0x5AA --Genji Shield
-    Ability[0x092] = 0x5BA --Akashic Record
-    Ability[0x259] = 0x96A --Akashic Record+
-    Ability[0x093] = 0x5CA --Nobody Guard
-    Ability[0x228] = 0x8DA --Frozen Pride
-    Ability[0x229] = 0x8EA --Frozen Pride+
-    Ability[0x1E3] = 0x6EA --Save the King
-    Ability[0x1F8] = 0x83A --Save the King+
-    Ability[0x22A] = 0x8FA --Joyous Mushroom
-    Ability[0x22B] = 0x90A --Joyous Mushroom+
-    Ability[0x22C] = 0x91A --Majestic Mushroom
-    Ability[0x22D] = 0x92A --Majestic Mushroom+
-    Ability[0x22E] = 0x93A --Ultimate Mushroom
-    Ability[0x032] = 0x5DA --Detection Shield
-    Ability[0x033] = 0x5EA --Test the King
-    if Ability[Shield] ~= nil then
-      local StatOffset = 0x8 + ReadInt(BAR(Sys3, 0x6, 4), OnPC) * 0x18
-      Ability = ReadShort(BAR(Sys3, 0x6, StatOffset + Ability[Shield]), OnPC) --Currently-equipped shield's ability
-      if Ability == 0x1A7 then                                                --Goofy Tornado
-        WriteShort(Save + 0x280A, 0x81A7)
-        WriteByte(BAR(Sys3, 0x6, 0x16EF), 0, OnPC)
-      elseif Ability == 0x1AD then --Goofy Bash
-        WriteShort(Save + 0x280A, 0x81AD)
-        WriteByte(BAR(Sys3, 0x6, 0x1707), 0, OnPC)
-      elseif Ability == 0x1A9 then --Goofy Turbo
-        WriteShort(Save + 0x280A, 0x81A9)
-        WriteByte(BAR(Sys3, 0x6, 0x171F), 0, OnPC)
-      elseif ReadShort(Save + 0x280A) ~= 0 then
-        WriteShort(Save + 0x280A, 0)               --Remove Ability Slot 80
-        WriteByte(BAR(Sys3, 0x6, 0x16EF), 2, OnPC) --Restore Original AP Costs
-        WriteByte(BAR(Sys3, 0x6, 0x1707), 2, OnPC)
-        WriteByte(BAR(Sys3, 0x6, 0x171F), 2, OnPC)
-      end
+  local Shield   = ReadShort(Save + 0x2718)
+  local Ability  = {}    --Offset for shield's ability within 03system.bar's item
+  Ability[0x031] = 0x53A --Knight's Shield
+  Ability[0x08B] = 0x54A --Adamant Shield
+  Ability[0x08C] = 0x55A --Chain Gear
+  Ability[0x08E] = 0x57A --Falling Star
+  Ability[0x08F] = 0x58A --Dreamcloud
+  Ability[0x090] = 0x59A --Knight Defender
+  Ability[0x08D] = 0x56A --Ogre Shield
+  Ability[0x091] = 0x5AA --Genji Shield
+  Ability[0x092] = 0x5BA --Akashic Record
+  Ability[0x259] = 0x96A --Akashic Record+
+  Ability[0x093] = 0x5CA --Nobody Guard
+  Ability[0x228] = 0x8DA --Frozen Pride
+  Ability[0x229] = 0x8EA --Frozen Pride+
+  Ability[0x1E3] = 0x6EA --Save the King
+  Ability[0x1F8] = 0x83A --Save the King+
+  Ability[0x22A] = 0x8FA --Joyous Mushroom
+  Ability[0x22B] = 0x90A --Joyous Mushroom+
+  Ability[0x22C] = 0x91A --Majestic Mushroom
+  Ability[0x22D] = 0x92A --Majestic Mushroom+
+  Ability[0x22E] = 0x93A --Ultimate Mushroom
+  Ability[0x032] = 0x5DA --Detection Shield
+  Ability[0x033] = 0x5EA --Test the King
+  if Ability[Shield] ~= nil then
+    local StatOffset = 0x8 + ReadInt(BAR(Sys3, 0x6, 4), OnPC) * 0x18
+    Ability = ReadShort(BAR(Sys3, 0x6, StatOffset + Ability[Shield]), OnPC) --Currently-equipped shield's ability
+    if Ability == 0x1A7 then                                                --Goofy Tornado
+      WriteShort(Save + 0x280A, 0x81A7)
+      WriteByte(BAR(Sys3, 0x6, 0x16EF), 0, OnPC)
+    elseif Ability == 0x1AD then --Goofy Bash
+      WriteShort(Save + 0x280A, 0x81AD)
+      WriteByte(BAR(Sys3, 0x6, 0x1707), 0, OnPC)
+    elseif Ability == 0x1A9 then --Goofy Turbo
+      WriteShort(Save + 0x280A, 0x81A9)
+      WriteByte(BAR(Sys3, 0x6, 0x171F), 0, OnPC)
+    elseif ReadShort(Save + 0x280A) ~= 0 then
+      WriteShort(Save + 0x280A, 0)               --Remove Ability Slot 80
+      WriteByte(BAR(Sys3, 0x6, 0x16EF), 2, OnPC) --Restore Original AP Costs
+      WriteByte(BAR(Sys3, 0x6, 0x1707), 2, OnPC)
+      WriteByte(BAR(Sys3, 0x6, 0x171F), 2, OnPC)
     end
   end
   --Show all items in shops (ASSEMBLY edit)

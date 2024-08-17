@@ -1,11 +1,12 @@
 function _OnInit()
+  print('Initializing Drive Logic')
   GameVersion = 0
 end
 
 function _OnFrame()
   --Define current values for common addresses
   if GameVersion == 0 then
-    if ReadString(0x09A92F0, 4) == 'KH2J' then      --EGS
+    if ReadString(0x09A92F0, 4) == 'KH2J' then --EGS
       drive1 = 0x3F1CCE
       drive2 = 0x400E64
       drive3 = 0x3E27AC
@@ -17,7 +18,7 @@ function _OnFrame()
       Now = 0x0716DF8
       Save = 0x09A92F0
     end
-    if ReadString(0x09A9830, 4) == 'KH2J' then      --Steam Global
+    if ReadString(0x09A9830, 4) == 'KH2J' then --Steam Global
       drive1 = 0x3F29EE
       drive2 = 0x401B84
       drive3 = 0x3E34CC
